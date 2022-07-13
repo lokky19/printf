@@ -1,25 +1,130 @@
-MIT License
+.\" _printf man page
+.\"
+.\"
+.\"
+.\"
+.\"
+.TH _PRINTF "25th May, 2022" "0.1" "Library functions manual"
 
-Copyright (c) 2019 Brennan D Baraban and Michael Klein
+.SH NAME
+.SH ""
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+.B _printf
+- custom version for printf function.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+.SH SYNOPSIS
+.SH ""
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
+#include "main.h"
+
+int _printf(const char *[FORMAT], ...);
+
+.SH DESCRIPTION
+.SH ""
+
+
+The printf function sends formatted output to stdout.
+A custom _printf() for learning purposes was developed by cohort  #6 students : Eniseyin Ibrahim and Kolade Hassan.
+_printf() function format string is a character string, beginning and ending in its initial shift state, if any. 
+These arguments are placed using the percentage '%' operator
+
+.SS Compilation
+
+.P
+.RS
+#include "main.h"
+
+$ gcc -Wall -Werror -Wextra -pedantic -Wno-format *.c
+$ gcc -Wall -Werror -Wextra -pedantic -g -Wno-format *.c (for gdb debbuging)
+.RE
+
+.SS Printing
+.RS
+
+int _printf(const char *[FORMAT], ...);
+
+FORMAT is the string that takes n specifier followed by a '%'
+symbol. i.e. "Hello this is %s from %d cohort". '...' is the variadic \
+(any type of variable).
+
+.SS Example
+
+.RS
+
+.B Input
+.PP
+_printf("Hello this is %s from %d cohort\\n\\", 33);
+.PP
+.B Output
+.PP
+Hello this is %s from %d cohort
+.RE
+
+.SS Return Value
+
+Return value is a n number of characters except NULL
+
+.SH FLAG SPECIFIERS
+.SH ""
+
+custom and non-custom specifier modifiers
+
+.SH THE LENGTH MODIFIERS
+.SH ""
+
+Length modifiers.
+
+.SH THE CONVERSION SPECIFIERS
+.SH ""
+
+.RS
+Current arguments handled by conversion specifiers:
+
+.IT
+.B %
+- % symbol is set without argument and conversion specification has to be'%%'.
+
+.IT
+.B c
+- integer or char argument converted to unsigned char.
+
+.IT
+.B d, i
+- int argument is converted to signed decimal integer.
+
+.IT
+.B s
+- string argument. _printf handles s conversion specifier if the argument value
+ is not a pointer to a literal string. \
+
+.IT
+
+.B o, u, x, X
+- unsigned int argument converted to unsigned octal (o), unsigned decimal (u),
+unsigned hexidecimal notation (x) for lower case and (X) for upper case
+
+.IT
+.B b
+- The unsigned int argument is converted to binary.
+
+.IT
+.B p
+- The pointer is printed in hexidecimal format preceded by '0x'.
+
+.IT
+.B r, R
+- 'r' prints string in reverse. 'R' prints encrypted rot13.
+
+.IT
+.B S
+- ascii <32 & >127 has to appear in the argument string. converted to
+hexadecimal preceded by \x
+
+.RE
+
+.P
+
+.SH "AUTHORS"
+.SH ""
+
+Eniseyin Ibrahim and Kolade Hassan
